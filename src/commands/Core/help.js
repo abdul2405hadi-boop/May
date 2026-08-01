@@ -98,12 +98,45 @@ export async function createInitialHelpMenu(client) {
                     '• Slash commands and prefixes both work once enabled',
                 ].join('\n'),
                 inline: false,
-            };
-        
+            },
+            {
+                name: '\u200B',
+                value: `-# ${botName} is [open source](https://youtu.be/1jCZX8s3bJE?si=NPOYx-vxVE1I5vJK)`,
+                inline: false,
+            },
+        ],
+    });
+
+    embed.setFooter({ 
+        text: "Made with ❤️" 
+    });
+    embed.setTimestamp();
+
+    const bugReportButton = new ButtonBuilder()
+        .setCustomId(BUG_REPORT_BUTTON_ID)
+        .setLabel("Report Bug")
+        .setStyle(ButtonStyle.Danger);
+
+    const supportButton = new ButtonBuilder()
+        .setLabel("Support Server")
+        .setURL("https://discord.gg/QnWNz2dKCE")
+        .setStyle(ButtonStyle.Link);
+
+    const selectRow = createSelectMenu(
+        CATEGORY_SELECT_ID,
+        "Select to view the commands",
+        options,
+    );
+
+    const buttonRow = new ActionRowBuilder().addComponents([
+        bugReportButton,
+        supportButton,
+    ]);
+
     return {
         embeds: [embed],
         components: [buttonRow, selectRow],
-    });
+    };
 }
 
 export default {
@@ -122,7 +155,7 @@ export default {
         await InteractionHelper.safeEditReply(interaction, {
             embeds,
             components,
-        }),
+        });
 
         setTimeout(async () => {
             try {
