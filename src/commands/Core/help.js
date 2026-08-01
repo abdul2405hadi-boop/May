@@ -103,7 +103,7 @@ export async function createInitialHelpMenu(client) {
     return {
         embeds: [embed],
         components: [buttonRow, selectRow],
-    };
+    });
 }
 
 export default {
