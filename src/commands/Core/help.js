@@ -98,7 +98,7 @@ export async function createInitialHelpMenu(client) {
                     '• Slash commands and prefixes both work once enabled',
                 ].join('\n'),
                 inline: false,
-            },
+            };
         
     return {
         embeds: [embed],
