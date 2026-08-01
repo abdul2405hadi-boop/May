@@ -122,7 +122,7 @@ export default {
         await InteractionHelper.safeEditReply(interaction, {
             embeds,
             components,
-        });
+        }),
 
         setTimeout(async () => {
             try {
